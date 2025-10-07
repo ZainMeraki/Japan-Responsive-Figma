@@ -1,0 +1,265 @@
+// Variables
+$color-black: #000000;
+$color-white: #FFFFFF;
+$color-dark-blue: #242635;
+
+$font-baloo: 'Baloo 2', cursive;
+$font-poppins: 'Poppins', sans-serif;
+$font-source: 'Source Sans Pro', sans-serif;
+
+// Breakpoints
+$breakpoint-tablet: 768px;
+$breakpoint-tablet-max: 1024px;
+$breakpoint-mobile: 480px;
+
+// Mixins
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == tablet {
+    @media (max-width: $breakpoint-tablet-max) and (min-width: ($breakpoint-tablet + 1)) {
+      @content;
+    }
+  } @else if $breakpoint == mobile {
+    @media (max-width: $breakpoint-tablet) {
+      @content;
+    }
+  } @else if $breakpoint == small-mobile {
+    @media (max-width: $breakpoint-mobile) {
+      @content;
+    }
+  }
+}
+
+// Reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// Base styles
+body {
+  background-color: $color-black;
+  font-family: $font-source;
+  color: $color-white;
+  min-height: 100vh;
+}
+
+// Header
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 62px;
+  padding-left: 286px;
+  padding-right: 284px;
+
+  @include respond-to(tablet) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @include respond-to(mobile) {
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 62px;
+  }
+
+  @include respond-to(small-mobile) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+// Logo
+.logo {
+  font-family: $font-baloo;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: -0.25px;
+  color: $color-white;
+  font-weight: 400;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+// Navigation
+nav {
+  display: flex;
+  gap: 29px;
+  align-items: center;
+  position: relative;
+
+  @include respond-to(tablet) {
+    gap: 30px;
+  }
+
+  > a {
+    font-family: $font-source;
+    font-size: 16px;
+    line-height: 22.4px;
+    color: $color-white;
+    text-decoration: none;
+    font-weight: 400;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    @include respond-to(mobile) {
+      display: none;
+    }
+  }
+
+  .menu-toggle-checkbox {
+    display: none;
+  }
+
+  .menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: block;
+    color: $color-dark-blue;
+    font-size: 16px;
+    transition: color 0.3s ease;
+
+    @include respond-to(mobile) {
+      color: $color-white;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    i {
+      transition: transform 0.3s ease;
+    }
+  }
+
+  .menu-toggle-checkbox:checked ~ .mobile-menu {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+}
+
+// Mobile Menu
+.mobile-menu {
+  display: flex;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: rgba(36, 38, 53, 0.95);
+  border-radius: 8px;
+  padding: 20px;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  min-width: 150px;
+
+  a {
+    font-family: $font-source;
+    font-size: 16px;
+    line-height: 22.4px;
+    color: $color-white;
+    text-decoration: none;
+    font-weight: 400;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+// Hero Section
+.hero {
+  text-align: center;
+  margin-top: 145px;
+  padding: 0 20px;
+
+  h1 {
+    font-family: $font-poppins;
+    font-weight: 500;
+    font-size: 84px;
+    line-height: 102px;
+    letter-spacing: -2px;
+    color: $color-white;
+    margin-bottom: 28px;
+
+    @include respond-to(tablet) {
+      font-size: 72px;
+      line-height: 82.8px;
+      letter-spacing: -1.6px;
+    }
+
+    @include respond-to(mobile) {
+      font-size: 36px;
+      line-height: 39.6px;
+      letter-spacing: -0.8px;
+      margin-bottom: 28px;
+    }
+  }
+
+  p {
+    font-family: $font-source;
+    font-size: 22px;
+    line-height: 34px;
+    color: $color-white;
+    font-weight: 400;
+    max-width: 574px;
+    margin: 0 auto;
+
+    @include respond-to(tablet) {
+      font-size: 22px;
+      line-height: 33px;
+    }
+
+    @include respond-to(mobile) {
+      font-size: 12px;
+      line-height: 18px;
+      max-width: 280px;
+    }
+  }
+}
+
+// Image Section
+.image-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 45px;
+  padding: 0 20px;
+
+  @include respond-to(mobile) {
+    margin-top: 57px;
+  }
+
+  img {
+    width: 864px;
+    height: 328px;
+    object-fit: cover;
+    display: block;
+
+    @include respond-to(tablet) {
+      width: 617px;
+      height: 512px;
+    }
+
+    @include respond-to(mobile) {
+      width: 256px;
+      height: 284px;
+    }
+  }
+}

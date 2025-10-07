@@ -19,12 +19,20 @@
 
 <body>
     <header>
-        <div class="logo">Head.</div>
+        <a href="/" class="logo">Head.</a>
         <nav>
             <a href="#works">Works</a>
             <a href="#services">Services</a>
             <a href="#contacts">Contacts</a>
-            <i class="fa-solid fa-ellipsis" style="color: #242635;"></i>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+            <label for="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+                <i class="fa-solid fa-ellipsis" style="color: #242635;"></i>
+            </label>
+            <div class="mobile-menu">
+                <a href="#works">Works</a>
+                <a href="#services">Services</a>
+                <a href="#contacts">Contacts</a>
+            </div>
         </nav>
     </header>
 
